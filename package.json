@@ -2,7 +2,7 @@
   "name": "smartance",
   "version": "0.1.0",
   "private": true,
-  "description": "Smartance — QR code-based smart attendance system (OUI final year project).",
+  "description": "Smartance — QR code-based smart attendance system (final year project, The Polytechnic Ile-Ife).",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

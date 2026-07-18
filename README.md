@@ -1,6 +1,6 @@
 # Smartance
 
-A QR code-based smart attendance system for **Oduduwa University Ipetumodu (OUI)**,
+A QR code-based smart attendance system for **The Polytechnic Ile-Ife**,
 Department of Computer Engineering.
 
 Final year project by **Bolarinwa Adeyemi Ogheneochuko** (H/24/CS/0023), supervised
@@ -41,9 +41,11 @@ Geofence gating is best-effort — GPS is spoofable on rooted/jailbroken devices
 
 The palette lives in `src/app/globals.css` as CSS variables that Tailwind
 consumes through `tailwind.config.ts`. It was derived programmatically from
-the OUI logo (`public/oui-logo.png`) — the dominant crimson, ribbon yellow,
-and shield orange became `--color-primary`, `--color-secondary`, and
-`--color-accent` respectively.
+a source logo (originally the OUI shield; the school affiliation later
+changed to The Polytechnic Ile-Ife but the palette was retained) — the
+dominant crimson, ribbon yellow, and shield orange became `--color-primary`,
+`--color-secondary`, and `--color-accent` respectively. The current
+institutional logo lives at `public/tpi-logo.png`.
 
 To retune the palette, edit `src/app/globals.css` — no component code needs
 to change.

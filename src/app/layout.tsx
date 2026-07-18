@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Smartance — Smart Attendance for OUI',
+  title: 'Smartance — Smart Attendance for The Polytechnic Ile-Ife',
   description:
-    'QR code-based smart attendance system for Oduduwa University Ipetumodu.',
+    'QR code-based smart attendance system for The Polytechnic Ile-Ife.',
 };
 
 export const viewport: Viewport = {

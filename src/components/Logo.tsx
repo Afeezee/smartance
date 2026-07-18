@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 /**
- * The Smartance wordmark + OUI shield. Wrapped in a link by default so it
- * doubles as a "go home" affordance from anywhere in the app.
+ * The Smartance wordmark + The Polytechnic Ile-Ife shield. Wrapped in a link
+ * by default so it doubles as a "go home" affordance from anywhere in the app.
  */
 export function Logo({
   size = 40,
@@ -16,8 +16,8 @@ export function Logo({
   const inner = (
     <div className="flex items-center gap-3">
       <Image
-        src="/oui-logo.png"
-        alt="Oduduwa University Ipetumodu"
+        src="/tpi-logo.png"
+        alt="The Polytechnic Ile-Ife"
         width={size}
         height={size}
         priority

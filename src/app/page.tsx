@@ -64,7 +64,7 @@ export default async function Home() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
             <p className="mb-4 inline-flex items-center rounded-full bg-secondary/40 px-3 py-1 text-xs font-medium text-text">
-              For Oduduwa University Ipetumodu
+              For The Polytechnic Ile-Ife
             </p>
             <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
               Take attendance in seconds,{' '}
@@ -101,7 +101,7 @@ export default async function Home() {
               )}
             </div>
             <p className="mt-4 text-sm text-text-muted">
-              Free for OUI. No app to download. Works on any phone with a camera.
+              Free for The Polytechnic Ile-Ife. No app to download. Works on any phone with a camera.
             </p>
           </div>
 
@@ -304,11 +304,11 @@ export default async function Home() {
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/oui-logo.png" alt="OUI" width={36} height={36} />
+            <Image src="/tpi-logo.png" alt="The Polytechnic Ile-Ife" width={36} height={36} />
             <div>
               <p className="text-sm font-semibold">Smartance</p>
               <p className="text-xs text-text-muted">
-                Department of Computer Engineering · Oduduwa University Ipetumodu
+                Department of Computer Engineering · The Polytechnic Ile-Ife
               </p>
             </div>
           </div>

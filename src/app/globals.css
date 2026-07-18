@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 /*
- * Palette derived from the OUI logo (see README.md → "Branding").
+ * Palette derived from the OUI logo (retained after institution swap since
+ * the visual identity is now separate from any single school's brand — see
+ * README.md → "Branding").
  * Change values here to retune the whole app in one place — Tailwind reads
  * these variables via the `colors` extension in tailwind.config.ts.
  */

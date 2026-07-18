@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         // Bound to CSS variables in globals.css so the palette can be tuned
-        // in one place. Sources: derived from the OUI logo (see README).
+        // in one place. See README → "Branding" for palette provenance.
         primary: {
           DEFAULT: 'var(--color-primary)',
           hover: 'var(--color-primary-hover)',
