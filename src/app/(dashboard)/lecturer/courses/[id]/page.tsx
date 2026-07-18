@@ -5,6 +5,7 @@ import { requireRole } from '@/lib/access';
 import { db } from '@/lib/db';
 import { attendanceSessions, courses, enrollments } from '@/lib/db/schema';
 import { Card, EmptyState } from '@/components/ui/Card';
+import { BackLink } from '@/components/ui/BackLink';
 import { CourseActions } from './CourseActions';
 import { InsightsPanel } from './InsightsPanel';
 
@@ -37,9 +38,7 @@ export default async function LecturerCoursePage({
   return (
     <div className="space-y-6">
       <div>
-        <Link href="/lecturer" className="text-sm text-text-muted hover:underline">
-          ← All courses
-        </Link>
+        <BackLink href="/lecturer" label="All courses" />
         <h1 className="mt-2 text-2xl font-semibold">
           <span className="text-primary">{course.code}</span> — {course.title}
         </h1>

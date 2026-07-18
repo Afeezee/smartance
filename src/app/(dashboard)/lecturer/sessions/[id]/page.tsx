@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { and, eq } from 'drizzle-orm';
 import { requireRole } from '@/lib/access';
 import { db } from '@/lib/db';
 import { attendanceSessions, courses } from '@/lib/db/schema';
+import { BackLink } from '@/components/ui/BackLink';
 import { LiveSession } from './LiveSession';
 
 export default async function LecturerSessionPage({
@@ -39,12 +39,7 @@ export default async function LecturerSessionPage({
   return (
     <div className="space-y-6">
       <div>
-        <Link
-          href={`/lecturer/courses/${row.courseId}`}
-          className="text-sm text-text-muted hover:underline"
-        >
-          ← Back to course
-        </Link>
+        <BackLink href={`/lecturer/courses/${row.courseId}`} label="Back to course" />
         <h1 className="mt-2 text-2xl font-semibold">
           <span className="text-primary">{row.courseCode}</span> — {row.courseTitle}
         </h1>
