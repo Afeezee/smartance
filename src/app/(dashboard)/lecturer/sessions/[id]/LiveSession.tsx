@@ -19,9 +19,11 @@ type Feed = {
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-// Token rotation cadence — a bit shorter than the token TTL (12s) so the QR
-// always shows a token that's comfortably in-date.
-const ROTATE_MS = 9_000;
+// Token rotation cadence — shorter than the token TTL (60s, see token route)
+// so the QR on-screen always has ≥15s of validity left when a student scans
+// it. Long enough to fit real-world scan latency (camera → tap link → page
+// load → geolocation prompt → submit).
+const ROTATE_MS = 45_000;
 // Feed polling cadence — snappy enough that check-ins feel real-time.
 const POLL_MS = 3_000;
 
@@ -118,7 +120,7 @@ export function LiveSession({
               </div>
             )}
             <p className="text-xs text-text-muted">
-              Refreshes every {ROTATE_MS / 1000}s · TTL 12s
+              Refreshes every {ROTATE_MS / 1000}s · valid for 60s
             </p>
             {tokenErr && <p className="text-sm text-primary">{tokenErr}</p>}
           </div>

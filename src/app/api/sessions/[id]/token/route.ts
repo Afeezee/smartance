@@ -15,10 +15,12 @@ import { signToken } from '@/lib/tokens';
 
 export const runtime = 'nodejs';
 
-// How long a single QR frame is valid. Short enough that a screenshotted
-// token is useless within a few seconds, long enough that a poor connection
-// can still make the round-trip.
-const TOKEN_TTL_MS = 12_000;
+// How long a single QR frame is valid. Long enough that a slow phone with
+// a geolocation prompt and a weak connection can complete the whole scan →
+// open → submit round-trip, short enough that a screenshotted token is
+// useless before the next class period. 60s hits that sweet spot in
+// classroom testing; tune together with ROTATE_MS in LiveSession.tsx.
+const TOKEN_TTL_MS = 60_000;
 
 export async function GET(_req: Request, ctx: { params: { id: string } }) {
   const guard = await requireApiRole('lecturer');
