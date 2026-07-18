@@ -1,16 +1,18 @@
 /**
  * One-shot script to bootstrap an admin account from environment variables.
  * Idempotent: if a user with ADMIN_EMAIL already exists, we upsert their
- * role to 'admin' and optionally reset the password.
+ * role to 'admin' and reset the password.
  *
- * Run with:  npx tsx scripts/seed-admin.ts
- * Env vars:  ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_NAME
+ * Run with:  npm run seed:admin
+ * Env vars:  ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_NAME (loaded from .env.local)
+ *
+ * Note on the dynamic imports: `import` statements are hoisted above any
+ * top-level code, so `dotenv` MUST be loaded before we `import` anything
+ * that reads process.env at module-load time (the DB client does).
  */
-import 'dotenv/config';
-import bcrypt from 'bcryptjs';
-import { eq } from 'drizzle-orm';
-import { db } from '../src/lib/db';
-import { users } from '../src/lib/db/schema';
+import { config as loadEnv } from 'dotenv';
+loadEnv({ path: '.env.local' });
+loadEnv();
 
 async function main() {
   const email = process.env.ADMIN_EMAIL?.toLowerCase();
@@ -19,7 +21,7 @@ async function main() {
 
   if (!email || !password) {
     console.error(
-      'ADMIN_EMAIL and ADMIN_PASSWORD must be set (see .env.example → seed section).',
+      'ADMIN_EMAIL and ADMIN_PASSWORD must be set in .env.local (see .env.example).',
     );
     process.exit(1);
   }
@@ -27,6 +29,11 @@ async function main() {
     console.error('ADMIN_PASSWORD must be at least 8 characters.');
     process.exit(1);
   }
+
+  const { default: bcrypt } = await import('bcryptjs');
+  const { eq } = await import('drizzle-orm');
+  const { db } = await import('../src/lib/db');
+  const { users } = await import('../src/lib/db/schema');
 
   const passwordHash = await bcrypt.hash(password, 12);
   const [existing] = await db.select().from(users).where(eq(users.email, email)).limit(1);
@@ -36,7 +43,7 @@ async function main() {
       .update(users)
       .set({ role: 'admin', passwordHash, fullName })
       .where(eq(users.id, existing.id));
-    console.log(`Updated existing user ${email} to admin.`);
+    console.log(`Updated existing user ${email} → admin.`);
   } else {
     await db.insert(users).values({ email, passwordHash, role: 'admin', fullName });
     console.log(`Created admin ${email}.`);
