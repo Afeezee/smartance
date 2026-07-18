@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Palette derived from the OUI logo (see README.md → "Branding").
+ * Change values here to retune the whole app in one place — Tailwind reads
+ * these variables via the `colors` extension in tailwind.config.ts.
+ */
+:root {
+  --color-primary: #c51c44;
+  --color-primary-hover: #a81638;
+  --color-secondary: #f9d205;
+  --color-accent: #ee8117;
+  --color-bg: #fafaf7;
+  --color-surface: #ffffff;
+  --color-border: #e7e5e4;
+  --color-text: #1f1f23;
+  --color-text-muted: #6b6a6e;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
